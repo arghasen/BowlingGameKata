@@ -5,9 +5,9 @@
 #include "Game.h"
 
 void Game::roll(int pins) {
-
+    m_score +=pins;
 }
 
 int Game::score() {
-    return 0;
+    return m_score;
 }

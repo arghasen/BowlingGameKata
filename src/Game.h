@@ -7,9 +7,10 @@
 
 
 class Game {
-
+    int m_score = 0;
 public:
     void roll(int pins);
+
     int score();
 };
 
