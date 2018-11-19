@@ -10,8 +10,18 @@ void rollMany(Game &g, int numTimes, int pins) {
         g.roll(pins);
     }
 }
+void rollSpare(Game &g) {
+    g.roll(5);
+    g.roll(5);
+}
+
+void rollStrike(Game &g) {
+    g.roll(10);
+}
+
 
 TEST_CASE("BowlingGame") {
+
     Game g;
 
     SECTION("Gutter Game") {
@@ -32,10 +42,17 @@ TEST_CASE("BowlingGame") {
     }
 
     SECTION(("One Spare and one non zero roll next")) {
-        g.roll(5);
-        g.roll(5); //spare
+        rollSpare(g);
         g.roll(3);
         rollMany(g,17,0);
         REQUIRE(g.score()==16);
+    }
+
+    SECTION(("One Strike ")) {
+        rollStrike(g);
+        g.roll(3);
+        g.roll(4);
+        rollMany(g,16,0);
+        REQUIRE(g.score()==24);
     }
 }
