@@ -10,6 +10,7 @@ void rollMany(Game &g, int numTimes, int pins) {
         g.roll(pins);
     }
 }
+
 void rollSpare(Game &g) {
     g.roll(5);
     g.roll(5);
@@ -34,25 +35,30 @@ TEST_CASE("BowlingGame") {
         REQUIRE(g.score() == 20);
     }
 
-    SECTION(("One Spare")) {
+    SECTION("One Spare") {
         g.roll(5);
         g.roll(5); //spare
-        rollMany(g,18,0);
-        REQUIRE(g.score()==10);
+        rollMany(g, 18, 0);
+        REQUIRE(g.score() == 10);
     }
 
-    SECTION(("One Spare and one non zero roll next")) {
+    SECTION("One Spare and one non zero roll next") {
         rollSpare(g);
         g.roll(3);
-        rollMany(g,17,0);
-        REQUIRE(g.score()==16);
+        rollMany(g, 17, 0);
+        REQUIRE(g.score() == 16);
     }
 
-    SECTION(("One Strike ")) {
+    SECTION("One Strike ") {
         rollStrike(g);
         g.roll(3);
         g.roll(4);
-        rollMany(g,16,0);
-        REQUIRE(g.score()==24);
+        rollMany(g, 16, 0);
+        REQUIRE(g.score() == 24);
+    }
+
+    SECTION("Perfect Game") {
+        rollMany(g, 12, 10);
+        REQUIRE(g.score() == 300);
     }
 }
