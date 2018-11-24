@@ -1,7 +1,16 @@
 language: cpp
 dist: xenial
+addons:
+    packages:
+        - lcov
+branches:
+    only:
+    - master
+    
 script:
     - mkdir -p build
     - cd build
     - cmake ..
     - make
+    - build/BowlingGameKata
+
