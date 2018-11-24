@@ -1,7 +1,5 @@
 language: cpp
-env:
-    global:
-        -LINUX_DIST=xenial
+dist:xenial
 script:
     - mkdir -p build
     - cd build
