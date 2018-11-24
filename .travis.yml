@@ -1,2 +1,9 @@
 language: cpp
-
+env:
+    global:
+        -LINUX_DIST=xenial
+script:
+    - mkdir -p build
+    - cd build
+    - cmake ..
+    - make
