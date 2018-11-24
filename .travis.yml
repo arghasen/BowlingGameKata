@@ -1,8 +1,5 @@
 language: cpp
 dist: xenial
-addons:
-    packages:
-        - lcov
 branches:
     only:
     - master
